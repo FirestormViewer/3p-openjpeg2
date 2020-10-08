@@ -4842,7 +4842,8 @@ static OPJ_BOOL opj_j2k_read_sod(opj_j2k_t *p_j2k,
         l_current_read_size = opj_stream_read_data(
                                   p_stream,
                                   *l_current_data + *l_tile_len,
-                                  p_j2k->m_specific_param.m_decoder.m_sot_length,
+                                  //p_j2k->m_specific_param.m_decoder.m_sot_length,
+                                  ((truncate == 0) ? p_j2k->m_specific_param.m_decoder.m_sot_length : opj_stream_get_number_byte_left(p_stream)),
                                   p_manager);
     } else {
         l_current_read_size = 0;
